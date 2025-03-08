@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="employee_count_text_size">32sp</dimen>
+    <dimen name="employee_item_padding">16dp</dimen>
+    <dimen name="employee_info_padding_start">16dp</dimen>
+    <dimen name="employee_name_text_size">20sp</dimen>
+    <dimen name="employee_info_text_size">16sp</dimen>
+    <dimen name="add_field_vertical_spacing">16sp</dimen>
+    <dimen name="fab_margin">16sp</dimen>
+</resources>

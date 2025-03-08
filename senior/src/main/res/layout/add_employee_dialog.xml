@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/employee_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/add_field_vertical_spacing"
+        android:hint="@string/employee_name_label" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/employee_title_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/employee_name_input"
+        android:layout_marginBottom="@dimen/add_field_vertical_spacing"
+        android:hint="@string/employee_title_label" />
+
+    <TextView
+        android:id="@+id/locations_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/employee_title_input"
+        android:text="@string/employee_locations_label"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/locations_error_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/locations_label"
+        android:layout_alignBottom="@id/locations_label"
+        android:layout_toEndOf="@id/locations_label"
+        android:contentDescription="@null"
+        android:src="@android:drawable/stat_notify_error"
+        android:visibility="gone"
+        app:tint="@color/design_default_color_error" />
+
+    <LinearLayout
+        android:id="@+id/locations_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/locations_label"
+        android:orientation="vertical" />
+
+</RelativeLayout>

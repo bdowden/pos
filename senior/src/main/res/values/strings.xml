@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Pairing Exercise Complete</string>
+    <string name="filter_all">All</string>
+    <string name="filter_austin">Austin</string>
+    <string name="filter_chicago">Chicago</string>
+    <string name="filter_new_york">New York</string>
+    <string name="employee_title">Title: %s</string>
+    <string name="employee_locations">Locations: %s</string>
+    <string name="total_num_employees">Total Employees: %d</string>
+
+    <!-- Used in the dialog to add a new employee -->
+    <string name="add_employee">Add employee</string>
+    <string name="add">Add</string>
+    <string name="employee_name_label">Name</string>
+    <string name="employee_title_label">Title</string>
+    <string name="employee_locations_label">Locations:</string>
+</resources>

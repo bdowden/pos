@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/sort_austin"
+        android:orderInCategory="1"
+        android:title="@string/filter_austin"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/sort_chicago"
+        android:orderInCategory="2"
+        android:title="@string/filter_chicago"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/sort_new_york"
+        android:orderInCategory="3"
+        android:title="@string/filter_new_york"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sort_all"
+        android:orderInCategory="3"
+        android:title="@string/filter_all"
+        app:showAsAction="never" />
+</menu>

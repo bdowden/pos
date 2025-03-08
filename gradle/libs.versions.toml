@@ -1,0 +1,120 @@
+[versions]
+junit = "1.2.1"
+lifecycleLivedataKtx = "2.8.7"
+minSdk = "26"
+mockitoCore = "4.3.1"
+mockitoInline = "4.3.1"
+mockitoKotlinKt = "1.5.0"
+moshiKotlin = "1.15.1"
+targetSdk = "33"
+# If you update the compile SDK, update the CI build image. In packages.txt it should be `platforms;android-<compileSdk>`
+compileSdk = "35"
+
+# Dependency versions are only added here if they are shared by multiple libraries in the [libraries] section. Otherwise, the version should remain
+# with the library definition.
+
+androidXActivity = "1.10.1"
+androidXFragment = "1.8.6"
+androidXLifecyle = "2.8.7"
+dagger = "2.55"
+espresso = "3.6.1"
+hiltNavigation = "1.2.0"
+junit5 = "5.10.2"
+kaspresso = "1.5.3"
+kotlin = "2.1.0"
+moshi = "1.15.2"
+rx2CoroutinesVersion = "1.9.0"
+
+[libraries]
+androidX-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidXActivity" }
+androidX-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "androidXActivity" }
+androidX-annotation = { module = "androidx.annotation:annotation", version = "1.9.1" }
+androidX-appCompat = { module = "androidx.appcompat:appcompat", version = "1.7.0" }
+androidX-asyncLayoutInflater = { module = "androidx.asynclayoutinflater:asynclayoutinflater", version = "1.0.0" }
+androidX-compose-bom = { module = "androidx.compose:compose-bom", version = "2025.02.00" }
+androidX-compose-constraintLayout = { module = "androidx.constraintlayout:constraintlayout-compose", version = "1.1.1" }
+androidX-compose-foundation = { module = "androidx.compose.foundation:foundation" }
+androidX-compose-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+androidX-compose-material3 = { module = "androidx.compose.material3:material3" }
+androidX-compose-materialIconsExtended = { module = "androidx.compose.material:material-icons-extended" }
+androidX-compose-navigation = { module = "androidx.navigation:navigation-compose", version = "2.8.8" }
+androidX-compose-testManifest = { module = "androidx.compose.ui:ui-test-manifest" }
+androidX-compose-ui = { module = "androidx.compose.ui:ui" }
+androidX-compose-uiTooling = { module = "androidx.compose.ui:ui-tooling" }
+androidX-compose-uiToolingData = { module = "androidx.compose.ui:ui-tooling-data" }
+androidX-compose-uiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidX-constraintLayout = { module = "androidx.constraintlayout:constraintlayout", version = "2.2.1" }
+androidX-coreKtx = { module = "androidx.core:core-ktx", version = "1.15.0" }
+androidX-fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "androidXFragment" }
+androidX-junitKtx = { module = "androidx.test.ext:junit-ktx", version = "1.2.1" }
+androidX-lifecycle-viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidXLifecyle" }
+androidX-lifecycle-viewModelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidXLifecyle" }
+androidX-preferences = { module = "androidx.preference:preference", version = "1.2.1" }
+androidX-recyclerView = { module = "androidx.recyclerview:recyclerview", version = "1.4.0" }
+androidX-testCoreKtx = { module = "androidx.test:core-ktx", version = "1.6.1" }
+androidX-testMonitor = { module = "androidx.test:monitor", version = "1.7.2" }
+androidX-testOrchestrator = { module = "androidx.test:orchestrator", version = "1.5.1" }
+androidX-testRules = { module = "androidx.test:rules", version = "1.6.1" }
+androidX-testRunner = { module = "androidx.test:runner", version = "1.6.2" }
+androidX-viewPager2 = { module = "androidx.viewpager2:viewpager2", version = "1.1.0" }
+
+assertJ = { module = "org.assertj:assertj-core", version = "3.27.3" }
+
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2", version.ref = "rx2CoroutinesVersion" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "rx2CoroutinesVersion" }
+
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+
+espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "espresso" }
+
+ext-junit = { module = "androidx.test.ext:junit", version.ref = "junit" }
+
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "dagger" }
+hilt-androidTesting = { module = "com.google.dagger:hilt-android-testing", version.ref = "dagger" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "dagger" }
+hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigation" }
+hilt-navigation-fragment = { module = "androidx.hilt:hilt-navigation-fragment", version.ref = "hiltNavigation" }
+
+javaxInject = { module = "javax.inject:javax.inject", version = "1" }
+
+junit = { module = "junit:junit", version = "4.13.2" }
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit5" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit5" }
+junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit5" }
+junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit5" }
+
+kaspresso = { module = "com.kaspersky.android-components:kaspresso", version.ref = "kaspresso" }
+kaspresso-compose = { module = "com.kaspersky.android-components:kaspresso-compose-support", version.ref = "kaspresso" }
+
+kotlin = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-immutableCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.7" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.8.0" }
+
+lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+
+material = { module = "com.google.android.material:material", version = "1.12.0" }
+
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
+mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockitoInline" }
+mockito-kotlin-kt = { module = "com.nhaarman:mockito-kotlin-kt1.1", version.ref = "mockitoKotlinKt" }
+mockk = { module = "io.mockk:mockk", version = "1.13.8" }
+
+moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
+moshi-adapters = { module = "com.squareup.moshi:moshi-adapters", version.ref = "moshi" }
+# Don't add dependency on moshi-kotlin, we do not want reflection-based JSON parsing
+moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshiKotlin" }
+moshi-kotlinAnnotation = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
+
+rxJava2 = { module = "io.reactivex.rxjava2:rxjava", version = "2.2.21" }
+rxJava2-android = { module = "io.reactivex.rxjava2:rxandroid", version = "2.1.1" }
+
+turbine = { module = "app.cash.turbine:turbine", version = "1.0.0" }
+
+[plugins]
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version = "2.1.0-1.0.29" }

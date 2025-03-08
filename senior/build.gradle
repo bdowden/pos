@@ -1,0 +1,90 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.compose.compiler)
+}
+
+android {
+    compileSdk libs.versions.compileSdk.get().toInteger()
+
+    defaultConfig {
+        applicationId "dev.yum.pairingexercise"
+        minSdk libs.versions.minSdk.get().toInteger()
+        targetSdk libs.versions.targetSdk.get().toInteger()
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures {
+        viewBinding true
+        compose = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
+    namespace 'dev.yum.pairingexercise'
+
+}
+
+dependencies {
+
+    // compose
+    implementation platform(libs.androidX.compose.bom)
+    androidTestImplementation platform(libs.androidX.compose.bom)
+    testImplementation platform(libs.androidX.compose.bom)
+    implementation libs.androidX.activity.compose
+    implementation libs.androidX.compose.material3
+    implementation libs.androidX.compose.ui
+    implementation libs.androidX.compose.uiTooling
+    implementation libs.androidX.compose.uiToolingPreview
+
+    implementation libs.androidX.coreKtx
+    implementation libs.androidX.appCompat
+    implementation libs.coroutines
+
+    // hilt
+    implementation libs.hilt.android
+    ksp libs.hilt.compiler
+
+    // dagger
+    implementation libs.dagger
+    ksp libs.dagger.compiler
+
+    implementation libs.material
+    implementation libs.androidX.constraintLayout
+    implementation libs.lifecycle.livedata.ktx
+    implementation libs.rxJava2
+
+    // moshi
+    implementation libs.moshi.kotlin
+    ksp libs.moshi.kotlinAnnotation
+
+    // testing
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso
+
+    testImplementation libs.assertJ
+    testImplementation libs.coroutines.test
+    testImplementation libs.junit
+    testImplementation libs.mockito.core
+    testImplementation libs.mockito.inline
+    testImplementation libs.mockito.kotlin.kt
+    testImplementation libs.mockk
+    testImplementation libs.turbine
+}

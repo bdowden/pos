@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="dev.yum.pairingexercisecompleted.MainActivity">
+
+    <!-- TODO: add text above the RecyclerView showing total employees-->
+    <!-- note: I think the interesting part of this will be seeing where they populate this from.-->
+    <TextView
+        android:id="@+id/number_employees"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/employee_count_text_size"
+        tools:text="Total employees: 10" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/employees_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/number_employees"
+        tools:listitem="@layout/item_employee" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_add"
+        android:tint="@color/white" />
+</RelativeLayout>

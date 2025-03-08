@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--TODO: refactor UI-->
+<!--note: should use dimens, tools, start/end instead of left/right, flatten view hierarchy, hopefully mention the
+ fact that it's using RelativeLayout isn't good/outdated-->
+<!--note: would be good to ask them why they're doing each of these refactors-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/employee_item_padding">
+
+    <TextView
+        android:id="@+id/employee_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/employee_name_text_size"
+        tools:text="Employee Name" />
+
+    <TextView
+        android:id="@+id/employee_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/employee_info_padding_start"
+        android:textSize="@dimen/employee_info_text_size"
+        tools:text="Title: Employee title" />
+
+    <TextView
+        android:id="@+id/employee_locations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/employee_info_padding_start"
+        android:textSize="@dimen/employee_info_text_size"
+        tools:text="Locations: Employee Locations" />
+</LinearLayout>

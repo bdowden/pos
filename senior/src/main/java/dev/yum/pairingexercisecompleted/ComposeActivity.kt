@@ -74,14 +74,14 @@ class ComposeActivity : ComponentActivity() {
         employeeViewModel = ViewModelProvider(this, factory)[EmployeeViewModel::class.java]
 
         setContent {
-            val viewState by employeeViewModel.employeeState.collectAsState()
+            val viewState by employeeViewModel.stateFlow.collectAsState()
 
             var showAddDialog by remember { mutableStateOf(false) }
             Scaffold(
                 topBar = {
                     TopBar(
                         currentlySelected = viewState.selectedFilter,
-                        onLocationClicked = employeeViewModel::filterList
+                        onLocationClicked = employeeViewModel::setFilterLocation
                     )
                 },
                 floatingActionButton = {

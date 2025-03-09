@@ -77,11 +77,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        when (item.itemId) {/*
             R.id.sort_austin -> employeeViewModel.filterList(Location.AUSTIN)
             R.id.sort_chicago -> employeeViewModel.filterList(Location.CHICAGO)
             R.id.sort_new_york -> employeeViewModel.filterList(Location.NEW_YORK)
-            R.id.sort_all -> employeeViewModel.filterList(Location.ALL)
+            R.id.sort_all -> employeeViewModel.filterList(Location.ALL)*/
             else -> super.onOptionsItemSelected(item)
         }
         return super.onOptionsItemSelected(item)

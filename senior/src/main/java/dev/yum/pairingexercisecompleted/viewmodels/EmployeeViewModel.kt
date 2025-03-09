@@ -1,13 +1,23 @@
 package dev.yum.pairingexercisecompleted.viewmodels
 
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.yum.pairingexercisecompleted.models.Employee
 import dev.yum.pairingexercisecompleted.services.EmployeeService
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.distinctUntilChangedBy
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.merge
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -25,10 +35,16 @@ sealed class Status() {
 
 class EmployeeViewModel(private val employeeService: EmployeeService) : ViewModel() {
 
-    private val _state = MutableStateFlow(EmployeeListViewState())
-    val employeeState = _state.asStateFlow()
+    val _state = MutableStateFlow(EmployeeListViewState())
 
-    private val allEmployees = mutableListOf<Employee>()
+    val stateFlow = _state.asStateFlow()
+
+    private var allEmployees by mutableStateOf<List<Employee>>(emptyList())
+
+    private val filterUpdateFlow = _state
+        .distinctUntilChangedBy { it.selectedFilter }
+
+    private val employeeUpdateFlow = snapshotFlow { allEmployees }
 
     init {
         viewModelScope.launch {
@@ -38,44 +54,55 @@ class EmployeeViewModel(private val employeeService: EmployeeService) : ViewMode
                 )
             }
 
+            merge(filterUpdateFlow, employeeUpdateFlow)
+                .map {
+                    filterEmployees(_state.value.selectedFilter)
+                }
+                .updateEmployeeList()
+                .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+                .launchIn(viewModelScope)
+
             employeeService.getEmployees().collect { employees ->
-               allEmployees.clear()
-                allEmployees.addAll(employees)
+                allEmployees = employees
 
                 _state.update {
                     it.copy(
-                        employeeList = allEmployees,
                         status = Status.Completed(),
                     )
                 }
             }
         }
     }
-
     suspend fun getEmployees() = employeeService.getEmployees()
 
-    fun filterList(location: Employee.Location) {
-        val filteredEmployees = if (location == Employee.Location.ALL) {
+    private fun filterEmployees(filter: Employee.Location) =
+        if (filter == Employee.Location.ALL) {
             allEmployees
         } else {
-            allEmployees.filter {
-                it.locations.contains(location)
+            allEmployees.filter { emp ->
+                emp.locations.contains(filter)
             }
         }
 
+    fun setFilterLocation(filter: Employee.Location) {
         _state.update {
             it.copy(
-                employeeList = filteredEmployees,
-                selectedFilter = location,
+                selectedFilter = filter,
             )
         }
     }
 
     fun saveNewEmployee(newEmployee: Employee) {
-        allEmployees.add(newEmployee)
-
-        val currentFilter = _state.value.selectedFilter
-
-        filterList(currentFilter)
+        allEmployees = allEmployees + newEmployee
     }
+
+
+    private fun Flow<List<Employee>>.updateEmployeeList(): Flow<List<Employee>> =
+        onEach { employees ->
+            _state.update {
+                it.copy(
+                    employeeList = employees,
+                )
+            }
+        }
 }
